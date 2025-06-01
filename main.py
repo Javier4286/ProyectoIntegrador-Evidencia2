@@ -46,3 +46,5 @@ while True:
         clear_console()
         print('\n¡Muchas gracias por utilizar nuestros servicios.!\n')
         break
+
+#Comentario de prueba Lazarte Alexis
