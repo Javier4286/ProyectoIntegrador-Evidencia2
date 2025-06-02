@@ -1,4 +1,6 @@
 from src.services.clear_console import clear_console
+from src.services.automatizaciones import automatizaciones
+from src.services.dispositivos import ver_dispositivos
 
 usuarios =[]
 
@@ -19,7 +21,7 @@ def crear_usuario():
         f'\nUsuario creado con exito!\n\nPresione ENTER para continuar '
     )
 
-def iniciar_sesion():
+def iniciar_sesion(dispositivos):
     clear_console()
     usuario_registrado = {}
     usuario_registrado['nombre'] = input('\nIniciar sesion\n\nIngrese nombre de usuario: ').lower()
@@ -38,12 +40,15 @@ def iniciar_sesion():
                 
                 elif menu_usuario == 2:
                     clear_console()
-                    print()
-                    input()
-
-
-
-
+                    automatizaciones(dispositivos)
+                
+                elif menu_usuario == 3:
+                    clear_console()
+                    ver_dispositivos(dispositivos)
+                
+                else:
+                    break
+                    
         else:
             print("usuario no regristrado")
             input()
