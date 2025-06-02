@@ -4,12 +4,12 @@ from src.services.clear_console import clear_console
 # from src.services.ver_dispositivos import ver_dispositivos
 # from src.services.eliminar_dispositivo import eliminar_dispositivo
 from src.services.automatizaciones import automatizaciones
-<<<<<<< HEAD
+# <<<<<<< HEAD
 from src.services.usuarios import crear_usuario
 from src.services.usuarios import iniciar_sesion
-=======
+# =======
 from src.services.dispositivos import agregar_dispositivo, ver_dispositivos, buscar_dispositivo, eliminar_dispositivo
->>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
+# >>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
 
 dispositivos = []
 
@@ -54,10 +54,10 @@ while True:
     else:
         clear_console()
         print('\n¡Muchas gracias por utilizar nuestros servicios.!\n')
-<<<<<<< HEAD
+# <<<<<<< HEAD
         break
-=======
+# =======
         break
 
 #Comentario de prueba Lazarte Alexis
->>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
+# >>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
