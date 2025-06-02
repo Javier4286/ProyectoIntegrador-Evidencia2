@@ -1,9 +1,10 @@
-from src.services.agregar_dispositivo import agregar_dispositivo
-from src.services.buscar_dispositivo import buscar_dispositivo
+# from src.services.agregar_dispositivo import agregar_dispositivo
+# from src.services.buscar_dispositivo import buscar_dispositivo
 from src.services.clear_console import clear_console
-from src.services.ver_dispositivos import ver_dispositivos
-from src.services.eliminar_dispositivo import eliminar_dispositivo
+# from src.services.ver_dispositivos import ver_dispositivos
+# from src.services.eliminar_dispositivo import eliminar_dispositivo
 from src.services.automatizaciones import automatizaciones
+from src.services.dispositivos import agregar_dispositivo, ver_dispositivos, buscar_dispositivo, eliminar_dispositivo
 
 dispositivos = []
 
