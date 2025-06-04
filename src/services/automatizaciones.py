@@ -1,5 +1,5 @@
 from src.services.clear_console import clear_console
-from src.services.ver_dispositivos import ver_dispositivos
+from src.services.dispositivos import ver_dispositivos
 from src.services.mensaje_en_espera import mensaje_en_espera
 
 
@@ -34,7 +34,7 @@ def automatizaciones(dispositivos):
                 if dispositivo['nombre'] == nombre_automatizacion:
                     dispositivo['estado'] = 'Apagado'
 
-            mensaje_en_espera('Automatizaciones', 'implementadas')
+            mensaje_en_espera(mensaje='automatización')
 
             ver_dispositivos(dispositivos,
                              mostrarInput=True,

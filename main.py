@@ -1,15 +1,6 @@
-# from src.services.agregar_dispositivo import agregar_dispositivo
-# from src.services.buscar_dispositivo import buscar_dispositivo
 from src.services.clear_console import clear_console
-# from src.services.ver_dispositivos import ver_dispositivos
-# from src.services.eliminar_dispositivo import eliminar_dispositivo
-from src.services.automatizaciones import automatizaciones
-# <<<<<<< HEAD
 from src.services.usuarios import crear_usuario
 from src.services.usuarios import iniciar_sesion
-# =======
-from src.services.dispositivos import agregar_dispositivo, ver_dispositivos, buscar_dispositivo, eliminar_dispositivo
-# >>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
 
 dispositivos = []
 
@@ -17,47 +8,21 @@ while True:
     clear_console()
     menu = int(
         input(
-            '\nBienvenidos al Sistema SmartHome Solutions\n\nA continuación, elija una opción:\n\n1) - Iniciar Sesión\n\n2) - Registrarse\n\n\n' \
-            '0) - Salir\n\nOpción elegida: '
+            '\nBienvenidos al Sistema SmartHome Solutions\n\nA continuación, elija una opción:\n\n1) - Iniciar Sesión\n\n2) - Registrarse\n\n\n0) - Salir\n\nOpción elegida: '
         ))
     if menu == 1:
-        while True:
-            clear_console()
-            iniciar_sesion(dispositivos)
-
-            # menu_usuarios = int(
-            #     input(
-            #         '\nGestión de dispositivos\n\n1) - Agregar nuevo dispositivo\n\n2) - Ver todos los dispositivos disponibles\n\n3) - Buscar dispositivos\n\n4) - Eliminar dispositivos\n\n\n0) - Volver\n\nOpción elegida: '
-            #     ))
-
-            # if menu_usuarios == 1:
-            #     agregar_dispositivo(dispositivos)
-
-            # elif menu_usuarios == 2:
-            #     ver_dispositivos(dispositivos,
-            #                      mostrarInput=True,
-            #                      noEsenciales=False)
-
-            # elif menu_usuarios == 3:
-            #     buscar_dispositivo(dispositivos)
-
-            # elif menu_usuarios == 4:
-            #     eliminar_dispositivo(dispositivos)
-
-            # else:
-            #     break
+        iniciar_sesion(dispositivos)
 
     elif menu == 2:
         crear_usuario()
-        # automatizaciones(dispositivos)
 
     else:
         clear_console()
-        print('\n¡Muchas gracias por utilizar nuestros servicios.!\n')
-# <<<<<<< HEAD
+        print('\n¡Muchas gracias por utilizar nuestros servicios!\n')
         break
-# =======
-        break
+'''
+'Revisar los nombres de las variables para una mejor lectura. Quizás se lea mejor opcion_elegida u opcion en lugar de menu_dispositivo.'
+No se encontró 'menu_dispositivo' para realizar correción solicitada.-
+'''
 
-#Comentario de prueba Lazarte Alexis
-# >>>>>>> 197709814a330ad889aa54a96d1a40a183b4cdb6
+# file:///F:/ISPC/Tecnicatura%20Superior%20en%20Desarrollo%20de%20Software%20(Res%20111324)/1%C2%B0%20A%C3%91O/Programador%20-%20TSDS%20-%202025/Evidencias%20de%20Aprendizaje/Evidencia%20de%20aprendizaje%20N%C2%B0%202/ProyectoIntegrador-Evidencia3.pdf
