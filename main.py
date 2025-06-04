@@ -26,3 +26,5 @@ No se encontró 'menu_dispositivo' para realizar correción solicitada.-
 '''
 
 # file:///F:/ISPC/Tecnicatura%20Superior%20en%20Desarrollo%20de%20Software%20(Res%20111324)/1%C2%B0%20A%C3%91O/Programador%20-%20TSDS%20-%202025/Evidencias%20de%20Aprendizaje/Evidencia%20de%20aprendizaje%20N%C2%B0%202/ProyectoIntegrador-Evidencia3.pdf
+
+# comentario de prueba Mariel Jimenez
