@@ -78,7 +78,7 @@ def buscar_dispositivo(dispositivos):
                 if buscar_tipo == tipo['tipo'].lower():
                     if encontrados == 0:
                         print('\nDispositivos encontrados:\n')
-                    print(f'\n{indice} - {tipo}\n')
+                    print(f'\n{indice} - Nombre: {tipo['nombre']}    Tipo: {tipo['tipo']}    Estado: {tipo['estado']}    Ubicación: {tipo['ubicacion']}    Esencial: {'Sí' if tipo['esencial'] == True else 'No'}')
                     encontrados += 1
                     indice += 1
 
@@ -103,7 +103,8 @@ def buscar_dispositivo(dispositivos):
                 if buscar_estado == estado['estado'].lower():
                     if encontrados == 0:
                         print('\nDispositivos encontrados:\n')
-                    print(f'\n{indice} - {estado}\n')
+                    print(f'\n{indice} - Nombre: {estado['nombre']}    Tipo: {estado['tipo']}    Estado: {estado['estado']}    Ubicación: {estado['ubicacion']}    Esencial: {'Sí' if estado['esencial'] == True else 'No'}')
+
                     encontrados += 1
                     indice += 1
 
@@ -128,7 +129,8 @@ def buscar_dispositivo(dispositivos):
                 if buscar_ubicacion == ubicacion['ubicacion'].lower():
                     if encontrados == 0:
                         print('\nDispositivos encontrados:\n')
-                    print(f'\n{indice} - {ubicacion}\n')
+                    print(f'\n{indice} - Nombre: {ubicacion['nombre']}    Tipo: {ubicacion['tipo']}    Estado: {ubicacion['estado']}    Ubicación: {ubicacion['ubicacion']}    Esencial: {'Sí' if ubicacion['esencial'] == True else 'No'}')
+
                     encontrados += 1
                     indice += 1
 
@@ -156,7 +158,7 @@ def buscar_dispositivo(dispositivos):
                 if buscar_esencialidad == esencialidad['esencial']:
                     if encontrados == 0:
                         print('\nDispositivos encontrados:\n')
-                    print(f'\n{indice} - {esencialidad}\n')
+                    print(f'\n{indice} - Nombre: {esencialidad['nombre']}    Tipo: {esencialidad['tipo']}    Estado: {esencialidad['estado']}    Ubicación: {esencialidad['ubicacion']}    Esencial: {'Sí' if esencialidad['esencial'] == True else 'No'}')
                     encontrados += 1
                     indice += 1
 
@@ -167,7 +169,7 @@ def buscar_dispositivo(dispositivos):
             else:
                 input('\nPresione ENTER para continuar ')
 
-def ver_dispositivos(dispositivos, mostrarInput=True, noEsenciales=False):
+def ver_dispositivos(dispositivos, mostrarInput=True, noEsenciales=False, seccion_automatizacion=False):
     clear_console()
 
     hay_dispositivos = False
@@ -176,7 +178,12 @@ def ver_dispositivos(dispositivos, mostrarInput=True, noEsenciales=False):
         input(
             '\nSin dispositivos disponibles\n\nPresione ENTER para continuar ')
     else:
-        print('\nDispositivos disponibles:\n')
+
+        if seccion_automatizacion == True:
+            print('\nAutomatización aplicada en los siguientes dispositivos:\n')
+        
+        else:
+            print('\nDispositivos disponibles:\n')
 
         if noEsenciales == False:
             for indice, dispositivo in enumerate(dispositivos, start=1):
@@ -211,7 +218,7 @@ def eliminar_dispositivo(dispositivos):
             clear_console()
             confirmar_eliminacion = int(
                 input(
-                    f'\n¿Está seguro que desea eliminar el dispositivo "{dispositivos[opcion_eliminar-1]}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
+                    f'\n¿Está seguro que desea eliminar el dispositivo "{dispositivos[opcion_eliminar-1]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
                 ))
             if confirmar_eliminacion == 2:
                 return
