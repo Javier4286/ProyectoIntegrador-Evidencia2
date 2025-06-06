@@ -51,75 +51,80 @@ def iniciar_sesion(dispositivos):
 
                 while True:
                     clear_console()
-                    menu_admin = int(
-                        input(
+                    menu_admin = input(
                             f'\n¡Bienvenido {usuario["nombre"]}!\n\n1) - Consultar automatizaciones activas\n\n2) - Gestionar dispositivos\n\n3) - Modificar rol de usuario\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
-                        ))
+                        )
                     
-                    if menu_admin == 0:
-                        return
+                    if menu_admin.isdigit() and int(menu_admin) in [0,1,2,3]:
+                        opcion = int(menu_admin)
 
-                    elif menu_admin == 1:
-                        clear_console()
-                        consultar_automatizaciones(automatizaciones)
+                        if opcion == 0:
+                            return
 
-                    elif menu_admin == 2:
-                        while True:
+                        elif opcion == 1:
                             clear_console()
-                            menu_usuarios = int(
-                                input(
+                            consultar_automatizaciones(automatizaciones)
+
+                        elif opcion == 2:
+                            while True:
+                                clear_console()
+                                menu_usuarios = int(
+                                    input(
                                     '\nGestión de dispositivos\n\n1) - Agregar nuevo dispositivo\n\n2) - Ver todos los dispositivos disponibles\n\n3) - Buscar dispositivos\n\n4) - Eliminar dispositivos\n\n\n0) - Volver\n\nOpción elegida: '
                                 ))
 
-                            if menu_usuarios == 1:
-                                agregar_dispositivo(dispositivos)
+                                if menu_usuarios == 1:
+                                    agregar_dispositivo(dispositivos)
 
-                            elif menu_usuarios == 2:
-                                ver_dispositivos(dispositivos)
+                                elif menu_usuarios == 2:
+                                    ver_dispositivos(dispositivos)
 
-                            elif menu_usuarios == 3:
-                                buscar_dispositivo(dispositivos)
+                                elif menu_usuarios == 3:
+                                    buscar_dispositivo(dispositivos)
 
-                            elif menu_usuarios == 4:
-                                eliminar_dispositivo(dispositivos)
+                                elif menu_usuarios == 4:
+                                    eliminar_dispositivo(dispositivos)
 
-                            else:
-                                break
+                                else:
+                                    break
 
-                    elif menu_admin == 3:
-                        clear_console()
-                        if len(usuarios) > 0:
-                            print('\nModificar rol de usuario.')
+                        elif opcion == 3:
+                            clear_console()
+                            if len(usuarios) > 0:
+                                print('\nModificar rol de usuario.')
 
-                            for indice, user in enumerate(usuarios):
-                                if user['nombre'] == 'admin' and user['rol'] == 'admin':
-                                    continue
-                                print(f'\n{indice} - Nombre: {user['nombre']}   Apellido: {user['apellido']}     Email: {user['email']}     Rol: {user['rol']}')
+                                for indice, user in enumerate(usuarios):
+                                    if user['nombre'] == 'admin' and user['rol'] == 'admin':
+                                        continue
+                                    print(f'\n{indice} - Nombre: {user['nombre']}   Apellido: {user['apellido']}     Email: {user['email']}     Rol: {user['rol']}')
 
-                            opcion_modificar = int(
-                                input(
-                                    '\n\nA continuación ingrese número de usuario a modificar:\n\n0) - Volver\n\nOpción elegida: '
-                                ))
-
-                            if opcion_modificar == 0:
-                                continue
-
-                            else:
-                                clear_console()
-                                confirmar_modificacion = int(
+                                opcion_modificar = int(
                                     input(
-                                        f'\n¿Está seguro que desea modificar el rol de usuario "{usuarios[opcion_modificar]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
+                                        '\n\nA continuación ingrese número de usuario a modificar:\n\n0) - Volver\n\nOpción elegida: '
                                     ))
 
-                                if confirmar_modificacion == 2:
+                                if opcion_modificar == 0:
                                     continue
 
                                 else:
-                                    usuarios[opcion_modificar]['rol'] = 'admin' if usuarios[opcion_modificar]['rol'] == 'estandar' else 'estandar'
                                     clear_console()
-                                    input(
-                                        '\n¡Rol de usuario actualizado con éxito!\n\nPresione ENTER para continuar '
-                                    )
+                                    confirmar_modificacion = int(
+                                        input(
+                                            f'\n¿Está seguro que desea modificar el rol de usuario "{usuarios[opcion_modificar]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
+                                        ))
+
+                                    if confirmar_modificacion == 2:
+                                        continue
+
+                                    else:
+                                        usuarios[opcion_modificar]['rol'] = 'admin' if usuarios[opcion_modificar]['rol'] == 'estandar' else 'estandar'
+                                        clear_console()
+                                        input(
+                                            '\n¡Rol de usuario actualizado con éxito!\n\nPresione ENTER para continuar '
+                                        )
+                    else:
+                        clear_console()
+                        input('\n¡Opción inválida!\n\nPresione ENTER para continuar ')
 
             else:
                 if nombre_ingresado == usuario['nombre'].lower(
