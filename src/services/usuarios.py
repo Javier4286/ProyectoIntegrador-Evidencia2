@@ -68,26 +68,38 @@ def iniciar_sesion(dispositivos):
                         elif opcion == 2:
                             while True:
                                 clear_console()
-                                menu_usuarios = int(
-                                    input(
+
+                                menu_usuarios = input(
                                     '\nGestión de dispositivos\n\n1) - Agregar nuevo dispositivo\n\n2) - Ver todos los dispositivos disponibles\n\n3) - Buscar dispositivos\n\n4) - Eliminar dispositivos\n\n\n0) - Volver\n\nOpción elegida: '
-                                ))
+                                )
 
-                                if menu_usuarios == 1:
-                                    agregar_dispositivo(dispositivos)
+                                if not menu_usuarios.isdigit() or int(menu_usuarios) not in range (0,5):
+                                    clear_console()
+                                    input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                    continue
 
-                                elif menu_usuarios == 2:
-                                    ver_dispositivos(dispositivos)
+                                opcion = int(menu_usuarios)
 
-                                elif menu_usuarios == 3:
-                                    buscar_dispositivo(dispositivos)
+                                if opcion == 1:
+                                        agregar_dispositivo(dispositivos)
 
-                                elif menu_usuarios == 4:
-                                    eliminar_dispositivo(dispositivos)
+                                elif opcion == 2:
+                                        ver_dispositivos(dispositivos)
 
-                                else:
+                                elif opcion == 3:
+                                        buscar_dispositivo(dispositivos)
+
+                                elif opcion == 4:
+                                        eliminar_dispositivo(dispositivos)
+
+                                elif opcion == 0:
                                     break
-
+                                
+                                else:
+                                    clear_console()
+                                    input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                    return
+                                    
                         elif opcion == 3:
                             clear_console()
                             if len(usuarios) > 0:
@@ -108,10 +120,18 @@ def iniciar_sesion(dispositivos):
 
                                 else:
                                     clear_console()
-                                    confirmar_modificacion = int(
-                                        input(
+                                    confirmar_modificacion_input = input(
                                             f'\n¿Está seguro que desea modificar el rol de usuario "{usuarios[opcion_modificar]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
-                                        ))
+                                        )
+                                    
+                                    if confirmar_modificacion_input.isdigit() and int(confirmar_modificacion_input) in [1,2]:
+                                        confirmar_modificacion = int(confirmar_modificacion_input)
+                                    
+                                    else:
+                                        clear_console()
+                                        input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                        return
+                                 
 
                                     if confirmar_modificacion == 2:
                                         continue
@@ -133,10 +153,18 @@ def iniciar_sesion(dispositivos):
 
                     while True:
                         clear_console()
-                        menu_usuario = int(
-                            input(
+                        menu_usuario_input = input(
                                 f'\n¡Bienvenido {usuario["nombre"].capitalize()}!\n\n1) - Consultar datos personales\n\n2) - Ejecutar automatizaciones\n\n3) - Consultar dispositivos\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
-                            ))
+                            )
+                        
+                        if menu_usuario_input.isdigit() and int(menu_usuario_input) in [0,1,2,3]:
+                            menu_usuario = int(menu_usuario_input)
+                        
+                        else:
+                            clear_console()
+                            input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                            return
+                            
 
                         if menu_usuario == 0:
                             return

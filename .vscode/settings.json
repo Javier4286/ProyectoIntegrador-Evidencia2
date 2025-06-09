@@ -1,3 +1,4 @@
 {
-    "window.zoomLevel": -0.25
+    "window.zoomLevel": -0.25,
+    "editor.mouseWheelZoom": false
 }

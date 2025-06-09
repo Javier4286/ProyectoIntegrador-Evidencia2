@@ -3,23 +3,57 @@ from src.services.clear_console import clear_console
 def agregar_dispositivo(dispositivos):
     clear_console()
     dispositivo = {}
-    dispositivo['nombre'] = input('\nIngrese nombre del dispositivo: ').lower()
-    dispositivo['tipo'] = input('\nIngrese tipo: ').lower()
-    dispositivo['estado'] = int(
-        input(
-            '\nIngrese estado:\n\n1) - Encendido\n\n2) - Apagado\n\nOpción elegida: '
-        ))
-    dispositivo[
-        'estado'] = 'Encendido' if dispositivo['estado'] == 1 else 'Apagado'
-    dispositivo['ubicacion'] = input('\nIngrese ubicación: ').lower()
+
+    nombre = input('\nIngrese nombre del dispositivo: ').strip().lower()
+    if nombre:
+        dispositivo['nombre'] = nombre
+    else:
+        clear_console()
+        input('\n¡El nombre no puede estar vacio! Presione ENTER para continuar ')
+        return
+
+    tipo = input('\nIngrese tipo del dispositivo: ').strip().lower()
+    if tipo:
+        dispositivo['tipo'] = tipo
+    else:
+        clear_console()
+        input('\n¡El tipo no puede estar vacio! Presione ENTER para continuar ')
+        return
+
+    estado_input = input('\nIngrese estado:\n\n1) - Encendido\n\n2) - Apagado\n\nOpción elegida: ')
+    if estado_input.isdigit() and int(estado_input) in [1,2]:
+        estado = int(estado_input)
+        dispositivo['estado'] = 'Encendido' if estado == 1 else 'Apagado'
+    else:
+        clear_console()
+        input('\n¡Entrada inválida! Presione ENTER para continuar ')
+        return
+
+    ubicacion = input('\nIngrese ubicación: ').strip().lower()
+
+    if ubicacion:
+        dispositivo['ubicacion'] = ubicacion
+    else:
+        clear_console()
+        input('\n¡La ubicación no puede estar vacia! Presione ENTER para continuar ')
+        return
+
     clear_console()
-    esEsencial = int(
-        input(
+
+    esEsencial_input = input(
             f'\nUsted considera que el dispositivo: "{dispositivo["nombre"].capitalize()}" es esencial?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
-        ))
-    esEsencial = True if esEsencial == 1 else False
-    dispositivo['esencial'] = esEsencial
+        )
+    
+    if esEsencial_input.isdigit() and int(esEsencial_input) in [1,2]:
+        esEsencial = int(esEsencial_input)
+        dispositivo['esencial'] = True if esEsencial == 1 else False
+    else:
+        clear_console()
+        input('\n¡Entrada inválida! Presione ENTER para continuar ')
+        return
+    
     dispositivos.append(dispositivo)
+    
     clear_console()
     input(
         f'\nDispositivo "{dispositivo["nombre"].capitalize()}" agregado con éxito!\n\nPresione ENTER para continuar '
@@ -192,7 +226,7 @@ def ver_dispositivos(dispositivos, mostrarInput=True, noEsenciales=False, seccio
         else:
             for indice, dispositivo in enumerate(dispositivos, start=1):
                 if dispositivo['esencial'] == False:
-                    print(f'\n{indice} - Nombre: {dispositivo['nombre']}    Tipo: {dispositivo['tipo']}    Estado: {dispositivo['estado']}    Ubicación: {dispositivo['ubicacion']}    Esencial: {dispositivo['esencial']}')
+                    print(f'\n{indice} - Nombre: {dispositivo['nombre']}    Tipo: {dispositivo['tipo']}    Estado: {dispositivo['estado']}    Ubicación: {dispositivo['ubicacion']}    Esencial: {'Sí' if dispositivo['esencial'] == True else 'No'}')
                     hay_dispositivos = True
         
         if not hay_dispositivos:
