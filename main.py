@@ -6,12 +6,12 @@ dispositivos = []
 
 while True:
     clear_console()
-    menu = input(
+    opcion_elegida = input(
         '\nBienvenidos al Sistema SmartHome Solutions\n\nA continuación, elija una opción:\n\n1) - Iniciar Sesión\n\n2) - Registrarse\n\n\n0) - Salir\n\nOpción elegida: '
     )
 
-    if menu.isdigit() and int(menu) in [0, 1, 2]:
-        opcion = int(menu)
+    if opcion_elegida.isdigit() and int(opcion_elegida) in [0, 1, 2]:
+        opcion = int(opcion_elegida)
 
         if opcion == 1:
             iniciar_sesion(dispositivos)
@@ -26,7 +26,9 @@ while True:
     else:
         clear_console()
         input('\n¡Opción inválida!\n\nPresione ENTER para continuar ')
+
+
 '''
-'Revisar los nombres de las variables para una mejor lectura. Quizás se lea mejor opcion_elegida u opcion en lugar de opcion_dispositivo.'
-No se encontró 'menu_dispositivo' para realizar correción solicitada.-
+Nombre de usuario: 'admin'
+Email: 'admin@admin.com.ar'
 '''

@@ -52,10 +52,10 @@ def iniciar_sesion(dispositivos):
                 while True:
                     clear_console()
                     menu_admin = input(
-                            f'\n¡Bienvenido {usuario["nombre"]}!\n\n1) - Consultar automatizaciones activas\n\n2) - Gestionar dispositivos\n\n3) - Modificar rol de usuario\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
-                        )
-                    
-                    if menu_admin.isdigit() and int(menu_admin) in [0,1,2,3]:
+                        f'\n¡Bienvenido {usuario["nombre"]}!\n\n1) - Consultar automatizaciones activas\n\n2) - Gestionar dispositivos\n\n3) - Modificar rol de usuario\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
+                    )
+
+                    if menu_admin.isdigit() and int(menu_admin) in [0, 1, 2, 3]:
                         opcion = int(menu_admin)
 
                         if opcion == 0:
@@ -63,7 +63,7 @@ def iniciar_sesion(dispositivos):
 
                         elif opcion == 1:
                             clear_console()
-                            consultar_automatizaciones(automatizaciones)
+                            consultar_automatizaciones()
 
                         elif opcion == 2:
                             while True:
@@ -73,33 +73,35 @@ def iniciar_sesion(dispositivos):
                                     '\nGestión de dispositivos\n\n1) - Agregar nuevo dispositivo\n\n2) - Ver todos los dispositivos disponibles\n\n3) - Buscar dispositivos\n\n4) - Eliminar dispositivos\n\n\n0) - Volver\n\nOpción elegida: '
                                 )
 
-                                if not menu_usuarios.isdigit() or int(menu_usuarios) not in range (0,5):
+                                if not menu_usuarios.isdigit() or int(menu_usuarios) not in range(0, 5):
                                     clear_console()
-                                    input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                    input(
+                                        '\n¡Entrada inválida! Presione ENTER para continuar ')
                                     continue
 
                                 opcion = int(menu_usuarios)
 
                                 if opcion == 1:
-                                        agregar_dispositivo(dispositivos)
+                                    agregar_dispositivo(dispositivos)
 
                                 elif opcion == 2:
-                                        ver_dispositivos(dispositivos)
+                                    ver_dispositivos(dispositivos)
 
                                 elif opcion == 3:
-                                        buscar_dispositivo(dispositivos)
+                                    buscar_dispositivo(dispositivos)
 
                                 elif opcion == 4:
-                                        eliminar_dispositivo(dispositivos)
+                                    eliminar_dispositivo(dispositivos)
 
                                 elif opcion == 0:
                                     break
-                                
+
                                 else:
                                     clear_console()
-                                    input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                    input(
+                                        '\n¡Entrada inválida! Presione ENTER para continuar ')
                                     return
-                                    
+
                         elif opcion == 3:
                             clear_console()
                             if len(usuarios) > 0:
@@ -108,7 +110,8 @@ def iniciar_sesion(dispositivos):
                                 for indice, user in enumerate(usuarios):
                                     if user['nombre'] == 'admin' and user['rol'] == 'admin':
                                         continue
-                                    print(f'\n{indice} - Nombre: {user['nombre']}   Apellido: {user['apellido']}     Email: {user['email']}     Rol: {user['rol']}')
+                                    print(
+                                        f'\n{indice} - Nombre: {user['nombre']}   Apellido: {user['apellido']}     Email: {user['email']}     Rol: {user['rol']}')
 
                                 opcion_modificar = int(
                                     input(
@@ -121,23 +124,25 @@ def iniciar_sesion(dispositivos):
                                 else:
                                     clear_console()
                                     confirmar_modificacion_input = input(
-                                            f'\n¿Está seguro que desea modificar el rol de usuario "{usuarios[opcion_modificar]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
-                                        )
-                                    
-                                    if confirmar_modificacion_input.isdigit() and int(confirmar_modificacion_input) in [1,2]:
-                                        confirmar_modificacion = int(confirmar_modificacion_input)
-                                    
+                                        f'\n¿Está seguro que desea modificar el rol de usuario "{usuarios[opcion_modificar]['nombre'].capitalize()}"?\n\n1) - Sí\n\n2) - No\n\nOpción elegida: '
+                                    )
+
+                                    if confirmar_modificacion_input.isdigit() and int(confirmar_modificacion_input) in [1, 2]:
+                                        confirmar_modificacion = int(
+                                            confirmar_modificacion_input)
+
                                     else:
                                         clear_console()
-                                        input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                                        input(
+                                            '\n¡Entrada inválida! Presione ENTER para continuar ')
                                         return
-                                 
 
                                     if confirmar_modificacion == 2:
                                         continue
 
                                     else:
-                                        usuarios[opcion_modificar]['rol'] = 'admin' if usuarios[opcion_modificar]['rol'] == 'estandar' else 'estandar'
+                                        usuarios[opcion_modificar]['rol'] = 'admin' if usuarios[
+                                            opcion_modificar]['rol'] == 'estandar' else 'estandar'
                                         clear_console()
                                         input(
                                             '\n¡Rol de usuario actualizado con éxito!\n\nPresione ENTER para continuar '
@@ -154,17 +159,17 @@ def iniciar_sesion(dispositivos):
                     while True:
                         clear_console()
                         menu_usuario_input = input(
-                                f'\n¡Bienvenido {usuario["nombre"].capitalize()}!\n\n1) - Consultar datos personales\n\n2) - Ejecutar automatizaciones\n\n3) - Consultar dispositivos\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
-                            )
-                        
-                        if menu_usuario_input.isdigit() and int(menu_usuario_input) in [0,1,2,3]:
+                            f'\n¡Bienvenido {usuario["nombre"].capitalize()}!\n\n1) - Consultar datos personales\n\n2) - Ejecutar automatizaciones\n\n3) - Consultar dispositivos\n\n\n0) - Cerrar Sesión\n\nOpción elegida: '
+                        )
+
+                        if menu_usuario_input.isdigit() and int(menu_usuario_input) in [0, 1, 2, 3]:
                             menu_usuario = int(menu_usuario_input)
-                        
+
                         else:
                             clear_console()
-                            input('\n¡Entrada inválida! Presione ENTER para continuar ')
+                            input(
+                                '\n¡Entrada inválida! Presione ENTER para continuar ')
                             return
-                            
 
                         if menu_usuario == 0:
                             return
